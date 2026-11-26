@@ -23,5 +23,7 @@ Mise en ligne de chaque dépôt :
 Formulaire de contact : envoi via Resend par le relais Railway (projet audace-contact),
 voir le dossier formulaire-resend. Il accepte les deux domaines.
 
-Chiffres CALIPSO : bloc masqué dans index.html (rechercher "À ACTIVER"),
-retirer l'attribut hidden après validation par Sylvain.
+Agenda : modifier uniquement le fichier evenements.js (mode d'emploi en tête du fichier).
+Les événements passés disparaissent tout seuls.
+
+Chiffres CALIPSO : affichés, datés du 14/10/2026 (section Environnement de index.html).
