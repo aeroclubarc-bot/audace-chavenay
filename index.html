@@ -175,6 +175,14 @@ h3{font-weight:700;font-size:1.05rem;line-height:1.3;margin-bottom:.45rem}
 .charte .kicker{color:var(--orange-l)}
 .charte-in{display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:start}
 .charte p.intro{color:rgba(255,255,255,.82);margin-bottom:1.6rem}
+.histo{list-style:none;margin:0 0 1.6rem;border-left:2px solid rgba(255,255,255,.2);padding-left:1.2rem;display:flex;flex-direction:column;gap:.9rem}
+.histo li{position:relative}
+.histo li::before{content:"";position:absolute;left:calc(-1.2rem - 6px);top:.45rem;width:10px;height:10px;border-radius:50%;background:var(--orange-l)}
+.histo b{display:block;color:#fff;font-size:.92rem}
+.histo span{display:block;color:rgba(255,255,255,.75);font-size:.88rem;line-height:1.55}
+.dgac{margin:0 0 1.6rem;padding:1rem 1.2rem;border-left:3px solid var(--orange-l);background:rgba(255,255,255,.06);border-radius:0 var(--r) var(--r) 0;font-family:var(--fs);font-style:italic;color:#fff;font-size:1rem;line-height:1.6}
+.dgac cite{display:block;margin-top:.5rem;font:500 .8rem var(--fh);font-style:normal;color:rgba(255,255,255,.65)}
+.dl{display:flex;flex-wrap:wrap;gap:.7rem}
 .charte .signed{color:#fff;font-weight:600;margin:-.4rem 0 1.6rem}
 .charte h3.small{font-size:.95rem;color:rgba(255,255,255,.9);margin:1.75rem 0 .75rem}
 .tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none}
@@ -416,8 +424,17 @@ footer a:hover{color:#fff;text-decoration:underline}
       <span class="kicker">Édition 2022</span>
       <h2 id="t-charte">La Charte de Chavenay</h2>
       <p class="intro">Charte des relations et de respect mutuel entre les usagers et les riverains de l’aérodrome de Chavenay-Villepreux, établie entre l’AUDACE et l’ADNAC, avec le concours de la municipalité de Chavenay, de la Commission consultative de l’environnement, du Groupe ADP et des services de la DGAC. Elle remplace le protocole de 1996, son avenant de 1999 et le texte de février 2011.</p>
-      <p class="signed">Signée le 17 février 2022 en mairie de Chavenay par les présidents de l’AUDACE et de l’ADNAC, et approuvée par la municipalité de Chavenay.</p>
-      <a href="charte-de-chavenay-2022.pdf" class="btn btn-orange" download>Télécharger la Charte signée (PDF)</a>
+      <ol class="histo">
+        <li><b>Juillet 1996</b><span>Premier protocole entre l’AUDACE et l’ADNAC, complété par un avenant en mai 1999.</span></li>
+        <li><b>28 février 2011</b><span>Signature de la Charte de Chavenay en mairie de Chavenay. Elle est approuvée par les municipalités de Davron, Feucherolles, Les Clayes-sous-Bois, Plaisir, Saint-Nom-la-Bretèche et Villepreux, par le député de la 3<sup>e</sup> circonscription des Yvelines, le Conseil général des Yvelines, Aéroports de Paris et le CNFAS.</span></li>
+        <li><b>2012-2013</b><span>La DSAC-Nord puis le sous-préfet de Saint-Germain-en-Laye apportent leur soutien écrit à la démarche.</span></li>
+        <li><b>17 février 2022</b><span>Édition révisée, signée en mairie de Chavenay par les présidents de l’AUDACE et de l’ADNAC, et approuvée par la municipalité de Chavenay.</span></li>
+      </ol>
+      <blockquote class="dgac">« Toute initiative visant à limiter l’impact sonore de l’aviation dans un cadre consensuel reçoit un accueil très positif. »<cite>DSAC-Nord, direction de la sécurité de l’aviation civile, 5 décembre 2012</cite></blockquote>
+      <div class="dl">
+        <a href="charte-de-chavenay-2022.pdf" class="btn btn-orange" download>Charte 2022 signée (PDF)</a>
+        <a href="charte-de-chavenay-2011.pdf" class="btn btn-ghost" download>Charte 2011 et approbations (PDF)</a>
+      </div>
     </div>
     <div>
       <ol class="arts">
@@ -462,7 +479,7 @@ footer a:hover{color:#fff;text-decoration:underline}
         <summary>Qu’est-ce que la Charte de Chavenay ?</summary>
         <div class="ans">
           <p>C’est un engagement volontaire conclu entre l’AUDACE, qui représente les usagers, et l’ADNAC, qui représente les riverains. Elle fixe des bonnes pratiques destinées à limiter la gêne sonore autour de l’aérodrome : plages de silence, piste préférentielle, réduction du bruit à la source et dispositif de suivi partagé.</p>
-          <p>Elle succède à un premier protocole conclu en 1996 et à une première Charte signée en février 2011. L’édition 2022, signée en mairie de Chavenay le 17 février 2022, actualise et améliore ces textes. Son application est suivie chaque année et présentée devant la Commission consultative de l’environnement, qui réunit toutes les parties prenantes, dont la DSAC-Nord et le Groupe ADP.</p>
+          <p>Elle succède à un premier protocole conclu en 1996 et à une première Charte signée le 28 février 2011, approuvée par six communes voisines et plusieurs institutions, et saluée par la DSAC-Nord et le sous-préfet de Saint-Germain-en-Laye. L’édition 2022, signée en mairie de Chavenay le 17 février 2022, actualise et améliore ces textes. Son application est suivie chaque année et présentée devant la Commission consultative de l’environnement, qui réunit toutes les parties prenantes, dont la DSAC-Nord et le Groupe ADP.</p>
         </div>
       </details>
       <details>
@@ -603,8 +620,8 @@ footer a:hover{color:#fff;text-decoration:underline}
   <div class="wrap communes-in">
     <div>
       <span class="kicker">Territoire</span>
-      <h2 id="t-communes">Un aérodrome au cœur de ses communes</h2>
-      <p class="lead">L’aérodrome partage son territoire avec les communes voisines. Les aéroclubs comptent parmi leurs adhérents de nombreux habitants de ces communes et participent à la vie locale.</p>
+      <h2 id="t-communes">Les communes qui ont approuvé la Charte</h2>
+      <p class="lead">En 2011, les municipalités voisines ont approuvé la Charte de Chavenay, aux côtés de la municipalité de Chavenay. Les aéroclubs comptent parmi leurs adhérents de nombreux habitants de ces communes et participent à la vie locale.</p>
     </div>
     <ul class="ctags">
       <li>Chavenay</li><li>Villepreux</li><li>Davron</li><li>Feucherolles</li><li>Les Clayes-sous-Bois</li><li>Plaisir</li><li>Saint-Nom-la-Bretèche</li>
