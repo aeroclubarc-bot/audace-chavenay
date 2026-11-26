@@ -1,28 +1,54 @@
 /*
  * AGENDA DE L’AÉRODROME — seul fichier à modifier pour annoncer un événement.
  *
- * Ajouter un bloc { ... } par événement, séparé par une virgule. Champs :
- *   date        (obligatoire) format AAAA-MM-JJ, ex. '2027-03-14'
- *   fin         (facultatif)  dernier jour si l’événement dure plusieurs jours
- *   heure       (facultatif)  ex. '9 h 30' ou '10 h - 17 h'
- *   titre       (obligatoire)
- *   organisateur(facultatif)  ex. 'AUDACE', 'Aéro-club Renault'
- *   lieu        (facultatif)  par défaut : Aérodrome de Chavenay
- *   texte       (facultatif)  une ou deux phrases
- *   lien        (facultatif)  adresse d’une page d’information
- *
- * Les événements passés disparaissent automatiquement du site.
- *
- * Exemple (à recopier sans les // ) :
- *
- * {
- *   date: '2027-09-18', fin: '2027-09-19', heure: '10 h - 18 h',
- *   titre: 'Journées européennes du patrimoine',
- *   organisateur: 'AUDACE et les aéroclubs',
- *   texte: 'Exposition d’avions, histoire de l’aérodrome, simulateurs.'
- * },
+ * Un bloc { ... } par événement, séparés par une virgule, DANS L’ORDRE CHRONOLOGIQUE.
+ * Champs :
+ *   titre        (obligatoire)
+ *   public       (facultatif)  ex. 'Tout public', 'Sur invitation', 'Réservé aux pilotes'
+ *   texte        (facultatif)  une ou deux phrases
+ *   icone        (facultatif)  un emoji affiché à la place de la date
+ *   date         (facultatif)  format AAAA-MM-JJ. Si renseignée, la date s’affiche
+ *                              et l’événement disparaît automatiquement une fois passé.
+ *                              Sans date, l’événement reste affiché jusqu’à ce qu’on le retire.
+ *   fin          (facultatif)  dernier jour, format AAAA-MM-JJ
+ *   heure, organisateur, lieu, lien  (facultatifs)
  */
 
 window.AUDACE_EVENEMENTS = [
+
+  {
+    icone: '🥂',
+    titre: 'Le verre des pilotes',
+    public: 'Pilotes et élèves pilotes',
+    texte: 'Pour bien commencer l’année, les pilotes et élèves pilotes des clubs de l’aérodrome se retrouvent autour d’un verre.'
+  },
+
+  {
+    icone: '☕',
+    titre: 'Café-croissants de la Charte',
+    public: 'Sur invitation',
+    texte: 'Un moment d’échange convivial entre les signataires de la Charte de Chavenay : dirigeants des aéroclubs, élus des communes voisines, association de riverains et partenaires institutionnels.'
+  },
+
+  {
+    icone: '🎨',
+    titre: 'Journée des artistes',
+    public: 'Tout public',
+    texte: 'Peintres, photographes et créateurs s’installent sur l’aérodrome, entre avions et hangars, pour une journée de création ouverte à tous.'
+  },
+
+  {
+    icone: '🏫',
+    titre: 'Les écoliers à l’aérodrome',
+    public: 'Scolaires',
+    texte: 'Les classes de CM des écoles élémentaires de Villepreux découvrent l’aérodrome, ses avions et ses métiers.'
+  },
+
+  {
+    icone: '🏛️',
+    titre: 'Journées européennes du patrimoine',
+    public: 'Tout public',
+    texte: 'Après plus de 6 000 visiteurs en 2026, l’aérodrome ouvre à nouveau ses portes : avions d’hier et d’aujourd’hui, simulateurs, exposition, vols découverte et rencontres avec les passionnés.'
+  }
 
 ];

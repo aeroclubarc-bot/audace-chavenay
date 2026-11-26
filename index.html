@@ -77,6 +77,16 @@ h3{font-weight:700;font-size:1.05rem;line-height:1.3;margin-bottom:.45rem}
 
 .env-test body::before{content:"Environnement de test, audace-chavenay.org. Le site officiel est audace-chavenay.fr";position:fixed;left:0;right:0;bottom:0;z-index:300;background:#b3261e;color:#fff;font:600 .85rem/1.4 var(--fh);text-align:center;padding:.45rem 1rem}
 .env-test footer{padding-bottom:4.5rem}
+/* DOCUMENTS */
+.docs{background:var(--bg2)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.1rem;margin-top:2.5rem}
+.doc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;text-decoration:none;transition:border-color .2s,transform .15s}
+.doc:hover{border-color:var(--navy-l);transform:translateY(-2px)}
+.doc img{width:100%;height:200px;object-fit:cover;object-position:top;background:#fff;border-bottom:1px solid var(--line)}
+.doc-txt{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.3rem}
+.doc-txt b{font-size:.95rem;line-height:1.3}
+.doc-txt span{font-size:.84rem;color:var(--muted)}
+
 /* AGENDA */
 .agenda{background:var(--bg)}
 .ev-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:2.5rem}
@@ -85,6 +95,9 @@ h3{font-weight:700;font-size:1.05rem;line-height:1.3;margin-bottom:.45rem}
 .ev-date b{font-size:1.5rem;font-weight:800}
 .ev-date span{font-size:.75rem;text-transform:lowercase}
 .ev h3{margin-bottom:.2rem}
+.ev-ico{background:var(--orange-p);font-size:1.9rem}
+.ev-public{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.02em;color:var(--navy-l);background:var(--sky-p);border-radius:100px;padding:.15rem .6rem;margin-bottom:.4rem}
+@media (prefers-color-scheme:dark){.ev-public{color:var(--orange-l)}}
 .ev .ev-meta{font-size:.82rem;color:var(--orange-d);font-weight:600;margin-bottom:.35rem}
 @media (prefers-color-scheme:dark){.ev .ev-meta{color:var(--orange-l)}}
 .ev p{font-size:.9rem;color:var(--muted)}
@@ -309,16 +322,20 @@ footer a{color:rgba(255,255,255,.72);text-decoration:none}
 footer a:hover{color:#fff;text-decoration:underline}
 .f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.82rem;color:rgba(255,255,255,.5)}
 
+.nav-links a{white-space:nowrap}
+.nav-logo{flex-shrink:0}
+@media (max-width:1120px){
+  .burger{display:block}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:.75rem 1rem 1rem}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.75rem 1rem;font-size:1rem}
+}
 @media (max-width:960px){
   .charte-in,.clubs-grid,.communes-in,.contact-in,.env-grid,.f-grid{grid-template-columns:1fr;gap:2.5rem}
   .facts{grid-template-columns:repeat(2,1fr)}
   .fact:nth-child(2){border-right:0}
   .fact:nth-child(n+3){border-top:1px solid var(--line)}
   .silence-notes{grid-template-columns:1fr}
-  .burger{display:block}
-  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:.75rem 1rem 1rem}
-  .nav-links.open{display:flex}
-  .nav-links a{padding:.75rem 1rem;font-size:1rem}
 }
 @media (max-width:640px){
   .wrap{padding:0 1.25rem}
@@ -336,7 +353,7 @@ footer a:hover{color:#fff;text-decoration:underline}
 <header class="nav">
   <div class="wrap nav-in">
     <a href="#" class="nav-logo" aria-label="AUDACE, retour en haut de page">
-      <img src="audace-logo.svg" alt="AUDACE" width="130" height="52">
+      <img src="audace-logo.svg" alt="AUDACE" width="129" height="52">
     </a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links" id="navlinks">
@@ -347,6 +364,7 @@ footer a:hover{color:#fff;text-decoration:underline}
         <li><a href="#environnement">Environnement</a></li>
         <li><a href="#clubs">Où voler ?</a></li>
         <li><a href="#transmettre">Jeunes</a></li>
+        <li><a href="#documents">Documents</a></li>
         <li><a href="#contact" class="cta">Contact</a></li>
       </ul>
     </nav>
@@ -397,7 +415,7 @@ footer a:hover{color:#fff;text-decoration:underline}
   <div class="wrap">
     <span class="kicker">Agenda</span>
     <h2 id="t-agenda">Prochains événements</h2>
-    <p class="lead">Pots des pilotes, cafés-croissants, Journée des artistes, Journées européennes du patrimoine, manifestations des clubs : les prochains rendez-vous de l’aérodrome.</p>
+    <p class="lead">Les grands rendez-vous de l’année sur l’aérodrome. Les dates sont annoncées ici dès qu’elles sont confirmées.</p>
     <div class="ev-list" id="evList"></div>
     <p class="ev-note">Un club organise un événement ouvert au public ? <a href="#contact">Écrivez-nous</a> pour l’annoncer ici.</p>
   </div>
@@ -567,20 +585,20 @@ footer a:hover{color:#fff;text-decoration:underline}
       <span class="kicker">Les structures de vol</span>
       <h2 id="t-clubs">Où voler à Chavenay ?</h2>
       <p class="quote">« Le pilotage sera toujours de votre âge ! »</p>
-      <p class="lead">Femme ou homme, jeune ou expérimenté : piloter est à la portée de tous. Avion école, train classique, voltige ou ULM, chaque structure de l’aérodrome a sa flotte et sa spécialité.</p>
+      <p class="lead">Femme ou homme, jeune ou expérimenté : piloter est à la portée de tous. Avion école, train classique, voltige ou ULM, chaque structure de l’aérodrome a sa flotte et sa spécialité. Selon leur activité, elles sont affiliées à la Fédération française aéronautique (FFA) ou, pour l’ULM, à la Fédération française de planeur ultra-léger motorisé (FFPLUM).</p>
       <ul class="clubs">
         <li><a class="club" href="https://www.acdif.fr" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/dassault.webp" alt="" width="240" height="147" loading="lazy"></span><span class="club-txt"><b>Aéro-club Dassault Île-de-France</b><span>acdif.fr</span></span></a></li>
         <li><a class="club" href="https://www.aeroclubcaudron.com" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/caudron.webp" alt="" width="160" height="160" loading="lazy"></span><span class="club-txt"><b>Aéro-club Gaston Caudron</b><span>aeroclubcaudron.com</span></span></a></li>
         <li><a class="club" href="https://www.aeroclubjeanbertin.fr" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/jean-bertin.webp" alt="" width="160" height="160" loading="lazy"></span><span class="club-txt"><b>Aéro-club Jean Bertin</b><span>aeroclubjeanbertin.fr</span></span></a></li>
-        <li><a class="club" href="https://www.aeroclubrenault.fr" target="_blank" rel="noopener"><span class="club-logo ph" aria-hidden="true">R</span><span class="club-txt"><b>Aéro-club Renault</b><span>aeroclubrenault.fr</span></span></a></li>
+        <li><a class="club" href="https://www.aeroclubrenault.fr" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/renault.webp" alt="" width="227" height="152" loading="lazy"></span><span class="club-txt"><b>Aéro-club Renault</b><span>aeroclubrenault.fr</span></span></a></li>
         <li><div class="club"><span class="club-logo ph" aria-hidden="true">ACP</span><span class="club-txt"><b>Association Charles Pégoud (ACP)</b><span>Stampe</span></span></div></li>
         <li><a class="club" href="https://www.aeroclub-arc.fr" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/arc.webp" alt="" width="160" height="160" loading="lazy"></span><span class="club-txt"><b>Aviation et Relations Culturelles (A.R.C.)</b><span>aeroclub-arc.fr</span></span></a></li>
-        <li><a class="club" href="https://www.capouestulm.com" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/cap-ouest-ulm.webp" alt="" width="218" height="160" loading="lazy"></span><span class="club-txt"><b>Cap Ouest ULM</b><span>capouestulm.com</span></span></a></li>
+        <li><a class="club" href="https://www.capouestulm.com" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/cap-ouest-ulm.webp" alt="" width="218" height="160" loading="lazy"></span><span class="club-txt"><b>Cap Ouest ULM</b><span>capouestulm.com · ULM, FFPLUM</span></span></a></li>
         <li><a class="club" href="https://ceva-voltige.fr" target="_blank" rel="noopener"><span class="club-logo ph" aria-hidden="true">CEVA</span><span class="club-txt"><b>Centre d’entraînement à la voltige aérienne</b><span>ceva-voltige.fr</span></span></a></li>
         <li><a class="club" href="https://www.cami-aero.fr/" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/cami.webp" alt="" width="192" height="160" loading="lazy"></span><span class="club-txt"><b>Cercle aéronautique du ministère de l’Intérieur (C.A.M.I.)</b><span>cami-aero.fr</span></span></a></li>
         <li><a class="club" href="https://www.aeroclub-cercle-aerien-peugeot.com" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/peugeot.webp" alt="" width="240" height="118" loading="lazy"></span><span class="club-txt"><b>Cercle aérien Peugeot</b><span>aeroclub-cercle-aerien-peugeot.com</span></span></a></li>
-        <li><a class="club" href="https://www.easy2fly.fr/" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/easy2fly.webp" alt="" width="143" height="50" loading="lazy"></span><span class="club-txt"><b>Easy2Fly</b><span>easy2fly.fr</span></span></a></li>
-        <li><div class="club"><span class="club-logo ph" aria-hidden="true">GEPAS</span><span class="club-txt"><b>Groupement d’études pour l’aviation sportive (GEPAS)</b></span></div></li>
+        <li><a class="club" href="https://www.easy2fly.fr/" target="_blank" rel="noopener"><span class="club-logo"><img src="logos/easy2fly.webp" alt="" width="143" height="50" loading="lazy"></span><span class="club-txt"><b>Easy2Fly</b><span>easy2fly.fr · ULM, FFPLUM</span></span></a></li>
+        <li><div class="club"><span class="club-logo"><img src="logos/gepas.webp" alt="" width="240" height="240" loading="lazy"></span><span class="club-txt"><b>Groupes d’études pour l’aviation sportive (GEPAS)</b></span></div></li>
       </ul>
     </div>
     <div>
@@ -608,7 +626,7 @@ footer a:hover{color:#fff;text-decoration:underline}
       <div class="card"><span class="ico" aria-hidden="true">📘</span><h3>Brevet d’initiation aéronautique</h3><p>Les aéroclubs sont reconnus par l’Éducation nationale pour préparer collégiens et lycéens au BIA.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">🔧</span><h3>Métiers de l’aéronautique</h3><p>Journées des métiers de l’aéronautique dans le cadre de la Semaine de l’industrie, vols de découverte pour le CIRFA.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">🎒</span><h3>Stages et alternance</h3><p>Accueil d’alternants et de stagiaires, notamment pour les stages pratiques des lycées professionnels de la filière sécurité.</p></div>
-      <div class="card"><span class="ico" aria-hidden="true">🧑‍✈️</span><h3>Formation des pilotes</h3><p>Organismes de formation approuvés (ATO) ou déclarés (DTO), sous le contrôle de la DGAC et selon les règles européennes de l’AESA.</p></div>
+      <div class="card"><span class="ico" aria-hidden="true">🧑‍✈️</span><h3>Formation des pilotes</h3><p>Pour l’avion, organismes de formation approuvés (ATO) ou déclarés (DTO), sous le contrôle de la DGAC et selon les règles européennes de l’AESA. Pour l’ULM, formation encadrée par la réglementation nationale.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">🛡️</span><h3>Maintien des compétences</h3><p>Pilotes privés et professionnels viennent s’entraîner aux manœuvres de sécurité dans un cadre rigoureux.</p></div>
       <div class="card"><span class="ico" aria-hidden="true">🏆</span><h3>Sport aérien</h3><p>Voltige, pilotage de précision, rallye aérien, Air Navigation Race : les clubs forment des champions, femmes et hommes.</p></div>
     </div>
@@ -626,6 +644,32 @@ footer a:hover{color:#fff;text-decoration:underline}
     <ul class="ctags">
       <li>Chavenay</li><li>Villepreux</li><li>Davron</li><li>Feucherolles</li><li>Les Clayes-sous-Bois</li><li>Plaisir</li><li>Saint-Nom-la-Bretèche</li>
     </ul>
+  </div>
+</section>
+
+<section id="documents" class="docs" aria-labelledby="t-docs">
+  <div class="wrap">
+    <span class="kicker">Documents</span>
+    <h2 id="t-docs">À lire et à partager</h2>
+    <p class="lead">Nos publications et les textes de référence, librement téléchargeables.</p>
+    <div class="doc-grid">
+      <a class="doc" href="documents/connaitre-aerodrome-chavenay.pdf" download>
+        <img src="documents/apercu-connaitre-aerodrome-chavenay.webp" alt="" width="240" height="339" loading="lazy">
+        <span class="doc-txt"><b>Connaître l’aérodrome de Chavenay</b><span>Histoire, Charte, environnement et activité de l’aérodrome. PDF, 4 pages.</span></span>
+      </a>
+      <a class="doc" href="documents/jep-2026-dans-le-souffle-des-helices.pdf" download>
+        <img src="documents/apercu-jep-2026-dans-le-souffle-des-helices.webp" alt="" width="240" height="339" loading="lazy">
+        <span class="doc-txt"><b>Dans le souffle des hélices</b><span>Retour sur les Journées européennes du patrimoine 2026 et leurs 6 000 visiteurs. PDF, 4 pages.</span></span>
+      </a>
+      <a class="doc" href="charte-de-chavenay-2022.pdf" download>
+        <img src="documents/apercu-charte-2022.webp" alt="" width="240" height="339" loading="lazy">
+        <span class="doc-txt"><b>Charte de Chavenay, édition 2022</b><span>Texte signé le 17 février 2022 en mairie de Chavenay. PDF, 7 pages.</span></span>
+      </a>
+      <a class="doc" href="charte-de-chavenay-2011.pdf" download>
+        <img src="documents/apercu-charte-2011.webp" alt="" width="240" height="339" loading="lazy">
+        <span class="doc-txt"><b>Charte de Chavenay, 2011</b><span>Texte signé le 28 février 2011, approbations et courriers de soutien. PDF, 11 pages.</span></span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -674,13 +718,13 @@ footer a:hover{color:#fff;text-decoration:underline}
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <div class="f-logo"><img src="audace-logo.svg" alt="AUDACE" width="110" height="44"></div>
+        <div class="f-logo"><img src="audace-logo.svg" alt="AUDACE" width="109" height="44"></div>
         <p>Association des usagers de l’aérodrome de Chavenay-Villepreux (LFPX). Pour un ciel partagé et un territoire respecté.</p>
       </div>
       <div>
         <h2>Sur ce site</h2>
         <ul>
-          <li><a href="#association">L’association</a></li><li><a href="#charte">La Charte</a></li><li><a href="#questions">Questions des riverains</a></li><li><a href="#environnement">Environnement</a></li><li><a href="#clubs">Où voler ?</a></li><li><a href="#communes">Communes</a></li><li><a href="#contact">Contact</a></li>
+          <li><a href="#association">L’association</a></li><li><a href="#charte">La Charte</a></li><li><a href="#questions">Questions des riverains</a></li><li><a href="#environnement">Environnement</a></li><li><a href="#clubs">Où voler ?</a></li><li><a href="#communes">Communes</a></li><li><a href="#documents">Documents</a></li><li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -688,7 +732,8 @@ footer a:hover{color:#fff;text-decoration:underline}
         <ul>
           <li><a href="charte-de-chavenay-2022.pdf" download>Charte de Chavenay (PDF)</a></li>
           <li><a href="https://entrevoisins.groupeadp.fr" target="_blank" rel="noopener">Entre Voisins, Groupe ADP</a></li>
-          <li><a href="https://www.ff-aero.fr" target="_blank" rel="noopener">Fédération française aéronautique</a></li>
+          <li><a href="https://www.ff-aero.fr" target="_blank" rel="noopener">Fédération française aéronautique (FFA)</a></li>
+          <li><a href="https://www.ffplum.fr" target="_blank" rel="noopener">Fédération française d’ULM (FFPLUM)</a></li>
           <li><a href="https://www.sia.aviation-civile.gouv.fr" target="_blank" rel="noopener">SIA, cartes VAC</a></li>
           <li><a href="https://www.ecologie.gouv.fr" target="_blank" rel="noopener">Ministère chargé des transports</a></li>
         </ul>
@@ -731,15 +776,25 @@ footer a:hover{color:#fff;text-decoration:underline}
     function d(s){var p=String(s||'').split('-');return new Date(+p[0],(+p[1]||1)-1,+p[2]||1);}
     function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(ch){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});}
     var mois=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
-    var up=data.filter(function(e){return e&&e.date&&e.titre&&d(e.fin||e.date)>=today;}).sort(function(a,b){return d(a.date)-d(b.date);}).slice(0,9);
-    if(!up.length){box.innerHTML='<p class="ev-empty">Les prochaines dates seront annoncées ici très bientôt.</p>';return;}
+    var up=data.filter(function(e){return e&&e.titre&&(!e.date||d(e.fin||e.date)>=today);});
+    if(!up.length){box.innerHTML='<p class="ev-empty">Les prochains rendez-vous seront annoncés ici très bientôt.</p>';return;}
     box.innerHTML=up.map(function(e){
-      var dd=d(e.date),df=e.fin?d(e.fin):null;
-      var quand=dd.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-      if(df&&+df!==+dd)quand='du '+dd.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+' au '+df.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
-      var meta=[quand,e.heure,e.lieu||'Aérodrome de Chavenay'].filter(Boolean).join(' · ');
-      return '<article class="ev"><div class="ev-date" aria-hidden="true"><b>'+dd.getDate()+'</b><span>'+mois[dd.getMonth()]+'</span></div><div>'+
-        '<h3>'+esc(e.titre)+'</h3><p class="ev-meta">'+esc(meta)+'</p>'+
+      var badge,meta=[];
+      if(e.date){
+        var dd=d(e.date),df=e.fin?d(e.fin):null;
+        badge='<div class="ev-date" aria-hidden="true"><b>'+dd.getDate()+'</b><span>'+mois[dd.getMonth()]+'</span></div>';
+        var quand=dd.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+        if(df&&+df!==+dd)quand='du '+dd.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+' au '+df.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+        meta.push(quand);
+      }else{
+        badge='<div class="ev-date ev-ico" aria-hidden="true">'+esc(e.icone||'✈️')+'</div>';
+      }
+      if(e.heure)meta.push(e.heure);
+      if(e.lieu)meta.push(e.lieu);
+      return '<article class="ev">'+badge+'<div>'+
+        (e.public?'<p class="ev-public">'+esc(e.public)+'</p>':'')+
+        '<h3>'+esc(e.titre)+'</h3>'+
+        (meta.length?'<p class="ev-meta">'+esc(meta.join(' · '))+'</p>':'')+
         (e.organisateur?'<p>Organisé par '+esc(e.organisateur)+'</p>':'')+
         (e.texte?'<p>'+esc(e.texte)+'</p>':'')+
         (e.lien&&/^https?:\/\//.test(e.lien)?'<p><a href="'+esc(e.lien)+'" target="_blank" rel="noopener">En savoir plus</a></p>':'')+

@@ -1,0 +1,31 @@
+SITE AUDACE — TEST (audace-chavenay.org) ET PRODUCTION (audace-chavenay.fr)
+
+Principe : deux dépôts GitHub, mêmes fichiers, seul le fichier CNAME diffère.
+  - audace-site-test  -> CNAME : www.audace-chavenay.org   (environnement de test)
+  - audace-site       -> CNAME : www.audace-chavenay.fr    (site officiel)
+On modifie et on vérifie sur le test, puis on recopie dans le dépôt officiel
+TOUS les fichiers SAUF le CNAME.
+
+Sur le .org, le site se reconnaît tout seul : bandeau rouge « Environnement de test »,
+titre préfixé [TEST], et balise noindex (Google ne l'indexe pas).
+Les messages du formulaire envoyés depuis le .org arrivent avec [TEST] dans l'objet.
+
+Mise en ligne de chaque dépôt :
+1. Contenu de ce dossier à la racine du dépôt (index.html au premier niveau),
+   y compris les fichiers cachés CNAME et .nojekyll. Adapter le CNAME pour le test.
+2. Dépôt public > Settings > Pages > Deploy from a branch > main / (root).
+3. Zone DNS OVH du domaine concerné (capture d'écran avant modification) :
+   - A sur @ : 185.199.108.153 / 185.199.109.153 / 185.199.110.153 / 185.199.111.153
+   - CNAME www -> VOTRE-COMPTE.github.io.
+   - Ne pas toucher aux MX, SPF, DKIM.
+4. Coche verte dans Settings > Pages, puis « Enforce HTTPS ».
+
+Formulaire de contact : envoi via Resend par le relais Railway (projet audace-contact),
+voir le dossier formulaire-resend. Il accepte les deux domaines.
+
+Agenda : modifier uniquement le fichier evenements.js (mode d’emploi en tête du fichier).
+Sans date, un événement reste affiché ; avec une date, il disparaît une fois passé.
+Documents téléchargeables : dossier documents/ (avec leurs aperçus apercu-*.webp).
+Les événements passés disparaissent tout seuls.
+
+Chiffres CALIPSO : affichés, datés du 14/10/2026 (section Environnement de index.html).

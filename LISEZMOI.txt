@@ -23,7 +23,9 @@ Mise en ligne de chaque dépôt :
 Formulaire de contact : envoi via Resend par le relais Railway (projet audace-contact),
 voir le dossier formulaire-resend. Il accepte les deux domaines.
 
-Agenda : modifier uniquement le fichier evenements.js (mode d'emploi en tête du fichier).
+Agenda : modifier uniquement le fichier evenements.js (mode d’emploi en tête du fichier).
+Sans date, un événement reste affiché ; avec une date, il disparaît une fois passé.
+Documents téléchargeables : dossier documents/ (avec leurs aperçus apercu-*.webp).
 Les événements passés disparaissent tout seuls.
 
 Chiffres CALIPSO : affichés, datés du 14/10/2026 (section Environnement de index.html).
