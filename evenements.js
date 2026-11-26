@@ -46,6 +46,7 @@ window.AUDACE_EVENEMENTS = [
 
   {
     icone: '🏛️',
+    date: '2027-09-18', fin: '2027-09-19',
     titre: 'Journées européennes du patrimoine',
     public: 'Tout public',
     texte: 'Après plus de 6 000 visiteurs en 2026, l’aérodrome ouvre à nouveau ses portes : avions d’hier et d’aujourd’hui, simulateurs, exposition, vols découverte et rencontres avec les passionnés.'
